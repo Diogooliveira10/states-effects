@@ -1,10 +1,14 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../Ifoodcounter/Ifoodcounter.css'
 
 export default function Ifoodcounter() {
 
     const [value, setValue] = useState(1)
     const [buttonStyle, setButtonStyle] = useState('counter-button-minus-active')
+
+    useEffect(()=> {
+        document.getElementById('moeda').innerHTML = 2.00 * value
+    },[value])
 
     function down() {
 
@@ -31,11 +35,17 @@ export default function Ifoodcounter() {
             >
                 -
             </button>
+
             <p>{value}</p>
+
             <button className='counter-button-plus-active'
                     onClick={up}
             >
                 +
+            </button>
+
+            <button id='moeda'>
+                12,00
             </button>
         </div>
   )
